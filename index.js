@@ -5,7 +5,7 @@ const fileUpload = require('express-fileupload');
 const MongoClient = require('mongodb').MongoClient;
 require('dotenv').config()
 
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.iymr7.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.iymr7.mongodb.net/doctorsPortal?retryWrites=true&w=majority`;
 
 
 const app = express()
@@ -89,6 +89,7 @@ client.connect(err => {
         doctorCollection.find({ email: email })
             .toArray((err, doctors) => {
                 res.send(doctors.length > 0);
+               
             })
     })
 
